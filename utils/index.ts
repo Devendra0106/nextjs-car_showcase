@@ -32,7 +32,6 @@ export async function fetchCars() {
 
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   const url = new URL('https://cdn.imagin.studio/getimage');
-
   const {make, model, year} = car;
   url.searchParams.append('customer', 'hrjavascript-mastery');
   url.searchParams.append('make', make);
@@ -40,6 +39,5 @@ export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   url.searchParams.append('zoomType', 'fullscreen');
   url.searchParams.append('modelYear', `${year}`);
   url.searchParams.append('angle', `${angle}`);
-
   return `${url}`;
 }
