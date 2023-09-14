@@ -29,8 +29,6 @@ const SearchBar = () => {
 		if (manufacturer.trim() === "" && model.trim() === "") {
 			return alert("Please provide some input");
 		}
-		console.log("model-->", model);
-		console.log("man-->", manufacturer);
 
 		updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
 	};
@@ -38,8 +36,6 @@ const SearchBar = () => {
 	const updateSearchParams = (model: string, manufacturer: string) => {
 		// Create a new URLSearchParams object using the current URL search parameters
 		const searchParams = new URLSearchParams(window.location.search);
-
-		console.log("searchParams-->", searchParams);
 
 		// Update or delete the 'model' search parameter based on the 'model' value
 		if (model) {
@@ -59,8 +55,6 @@ const SearchBar = () => {
 		const newPathname = `${
 			window.location.pathname
 		}?${searchParams.toString()}`;
-
-		console.log("newPathname-->", newPathname);
 
 		router.push(newPathname);
 	};
