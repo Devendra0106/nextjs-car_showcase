@@ -1,6 +1,7 @@
 "use client";
 
 import { CarCard, CustomeFilter, Hero, SearchBar } from "@/components";
+import { fuels, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
 
 export default async function Home({ searchParams }: any) {
@@ -25,8 +26,8 @@ export default async function Home({ searchParams }: any) {
 				<div className="home__filters">
 					<SearchBar />
 					<div className="home__filter-container">
-						<CustomeFilter title="fuel" />
-						<CustomeFilter title="year" />
+						<CustomeFilter title="fuel" options={fuels} />
+						<CustomeFilter title="year" options={yearsOfProduction} />
 					</div>
 				</div>
 
