@@ -6,9 +6,15 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CustomFilterProps } from "@/types";
 import { updateSearchParams } from "@/utils";
 
-const CustomeFilter = ({ title, options, setFilter }: any) => {
+const CustomeFilter = ({ title, options }: CustomFilterProps) => {
 	const router = useRouter();
 	const [selected, setSelected] = useState(options[0]);
+
+	const handleUpdateParams = (e: { title: string; value: string }) => {
+		const newPathName = updateSearchParams(title, e.value.toLowerCase());
+
+		router.push(newPathName);
+	};
 
 	return (
 		<div className="w-fit">
@@ -16,7 +22,7 @@ const CustomeFilter = ({ title, options, setFilter }: any) => {
 				value={selected}
 				onChange={(e) => {
 					setSelected(e);
-					setFilter(e.value);
+					handleUpdateParams(e);
 				}}
 			>
 				<div className="relative w-fit z-10">
@@ -37,7 +43,7 @@ const CustomeFilter = ({ title, options, setFilter }: any) => {
 						leaveTo="opacity-0"
 					>
 						<Listbox.Options className="custom-filter__options">
-							{options.map((option: any) => (
+							{options.map((option) => (
 								<Listbox.Option
 									key={option.title}
 									value={option}
